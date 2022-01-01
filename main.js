@@ -28,7 +28,7 @@ window.onload = function() {
         //the next focussed element is not inside the dropdown content
         droptarget.addEventListener("focusout", () => {
             window.setTimeout( () => {
-                if(!droptarget.contains(document.activeElement)){
+                if(!droptarget.contains(document.activeElement) && document.activeElement != dropbtn){
                     droptarget.classList.remove("show");
                     console.log("remove2");
                 }
