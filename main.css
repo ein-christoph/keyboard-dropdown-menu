@@ -1,133 +1,191 @@
 :root{
-    --primary: #00796b;
-    --primary-dark: #004c40;
-    --primary-text: #FFFFFF;
-    --background: #FFFFFF;
-    --background-text: #000000;
+  --primary: #00796b;
+  --primary-dark: #004c40;
+  --primary-text: #FFFFFF;
+  --background: #FFFFFF;
+  --background-text: #000000;
 
-    --notimplemented: #d1d1d1;
+  --notimplemented: #d1d1d1;
 }
 
 /*=====BEGIN menu=====*/
 #menu {
-  background-color: var(--background);
-  overflow: hidden;
-  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 17%);
+background-color: var(--background);
+overflow: hidden;
+box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 17%);
 }
 
 #menu a {
-  float: left;
-  display: block;
-  color: var(--backgroun-text);
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  border-radius: 5px 5px 0px 0px;
-  margin: 5px 5px 0px 5px;
+float: left;
+display: block;
+color: var(--backgroun-text);
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+border-radius: 5px 5px 0px 0px;
+margin: 5px 5px 0px 5px;
 }
 
 #menu .active {
-  border-bottom: 3px solid var(--primary-dark);
-  padding: 14px 16px 11px 16px;
-  color: var(--primary-dark);
+border-bottom: 3px solid var(--primary-dark);
+padding: 14px 16px 11px 16px;
+color: var(--primary-dark);
 }
 
 #menu .dropdown {
-  float: left;
-  overflow: hidden;
+float: left;
+overflow: hidden;
 }
 
-#menu .dropdown .dropbtn {
-  position: relative;
-  font-size: 17px;
-  border: none;
-  outline: none;
-  color: var(--background-text);
+#menu .dropdown .dropbtn, #menu .menu-icon{
+position: relative;
+font-size: 17px;
+border: none;
+outline: none;
+color: var(--background-text);
+padding: 14px 16px;
+background-color: inherit;
+font-family: inherit;
+margin: 5px 5px 0px 5px;
+border-radius: 5px 5px 0px 0px;
+}
+
+#menu .dropdown .dropbtn{
   padding: 14px 33px 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 5px 5px 0px 5px;
-  border-radius: 5px 5px 0px 0px;
 }
 
 #menu .dropdown .dropbtn  .downarrow{
-  position: absolute;
-  width: 0; 
-  height: 0; 
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid;
-  right: 0;
-  top: 0;
-  margin: 21px 16px 0px 0px;
+position: absolute;
+width: 0; 
+height: 0; 
+border-left: 5px solid transparent;
+border-right: 5px solid transparent;
+border-top: 5px solid;
+right: 0;
+top: 0;
+margin: 21px 16px 0px 0px;
 }
 
-#menu a:focus, #menu .dropdown .dropbtn:focus{
-  outline: 2px solid var(--primary-dark);
+#menu a:focus, #menu .dropdown .dropbtn:focus, #menu .menu-icon:focus{
+outline: 2px solid var(--primary-dark);
 }
 
 #menu .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: var(--background);
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 32%);
-  z-index: 1;
-  border-radius: 0px 0px 5px 5px;
-  padding: 0px 0px 5px 0px;
-  margin-left: 5px;
+display: none;
+position: absolute;
+background-color: var(--background);
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 32%);
+z-index: 1;
+border-radius: 0px 0px 5px 5px;
+padding: 0px 0px 5px 0px;
+margin-left: 5px;
 }
 
 #menu .dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-  border-radius: 5px;
+float: none;
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+text-align: left;
+border-radius: 5px;
 }
 
-#menu a:hover, #menu .dropdown:hover .dropbtn {
-  background-color: var(--primary-dark);
-  color: var(--primary-text);
+#menu a:hover, #menu .dropdown:hover .dropbtn, #menu .menu-icon:hover{
+background-color: var(--primary-dark);
+color: var(--primary-text);
 }
 
 #menu .dropdown-content a:hover {
-  background-color: var(--primary);
-  color: var(--primary-text);
+background-color: var(--primary);
+color: var(--primary-text);
 }
 
-#menu .dropdown:hover .dropdown-content{
-  display: block;
+#menu .dropdown:hover .dropdown-content, #menu .dropdown-content.show{
+display: block;
 }
+
+/*=======Make it responsive=========*/
+
+#menu .menu-icon{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 5px 20px 0px 0px;
+  font-size: 20px;
+  padding: 9px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+}
+
+@media screen and (max-width: 730px) {
+  #menu a:not(.active), #menu .dropdown .dropbtn {
+    display: none;
+  }
+
+  #menu .menu-icon {
+    display: block;
+  }
+
+  #menu.responsive {position: relative;}
+
+  #menu.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    max-width: 368px;
+  }
+  #menu.responsive .dropdown {float: none;}
+
+  #menu.responsive .dropdown-content {position: relative;}
+
+  #menu.responsive .dropdown .dropbtn {
+    float: none;
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+  }
+
+  #menu .dropdown-content{
+    box-shadow: none;
+  }
+
+  #menu .dropdown:hover .dropdown-content:not(.show){
+    display: none;
+  }
+}
+
+
 /*=====END menu=====*/
-
 
 /*===Irrelevant stuff you may ignore==*/
 *{
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
 html, body{
-    margin: 0px;
-    padding: 0px;
-    background-color: var(--notimplemented);
+  margin: 0px;
+  padding: 0px;
+  background-color: var(--notimplemented);
 }
 
 .content *{
-    text-align: center;
-    font-weight: normal;
+  text-align: center;
+  font-weight: normal;
 }
 
 .content p{
-    line-height: 30px;
+  line-height: 30px;
 }
 
 .content key{
-    border: 1px solid gray;
-    background-color: #e7e7e7;
-    padding: 4px;
-    border-radius: 4px;
+  border: 1px solid gray;
+  background-color: #e7e7e7;
+  padding: 4px;
+  border-radius: 4px;
 }

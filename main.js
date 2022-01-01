@@ -12,18 +12,34 @@ window.onload = function() {
         
         //show the dropdown content when the button is clicked
         dropbtn.onclick = () => {  
-            droptarget.style.display = "block";
-            //and focus the first link
-            droptarget.getElementsByTagName('a')[0].focus();
+            //toggle display of dropcontent
+            if(droptarget.classList.contains("show")){
+                droptarget.classList.remove("show");
+                console.log("remove");
+            }else{
+                console.log("add");
+                droptarget.classList.add("show");
+                //and focus the first link
+                droptarget.getElementsByTagName('a')[0].focus();
+            }
         };
 
         //hide dropdowncontent if link looses focus and 
         //the next focussed element is not inside the dropdown content
         droptarget.addEventListener("focusout", () => {
             window.setTimeout( () => {
-                if(!droptarget.contains(document.activeElement))
-                    droptarget.style.display = "none";
-            }, 5);
+                if(!droptarget.contains(document.activeElement)){
+                    droptarget.classList.remove("show");
+                    console.log("remove2");
+                }
+            }, 50);
         });
     });
 };
+
+
+//for responsivness
+
+function openclosemenu() {
+    document.getElementById("menu").classList.toggle("responsive");
+}
