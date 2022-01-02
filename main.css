@@ -42,7 +42,6 @@ overflow: hidden;
 position: relative;
 font-size: 17px;
 border: none;
-outline: none;
 color: var(--background-text);
 padding: 14px 16px;
 background-color: inherit;
@@ -68,7 +67,7 @@ margin: 21px 16px 0px 0px;
 }
 
 #menu a:focus, #menu .dropdown .dropbtn:focus, #menu .menu-icon:focus{
-outline: 2px solid var(--primary-dark);
+outline-color: var(--primary-dark);
 }
 
 #menu .dropdown-content {
