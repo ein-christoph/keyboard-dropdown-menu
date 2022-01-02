@@ -15,9 +15,7 @@ window.onload = function() {
             //toggle display of dropcontent
             if(droptarget.classList.contains("show")){
                 droptarget.classList.remove("show");
-                console.log("remove");
             }else{
-                console.log("add");
                 droptarget.classList.add("show");
                 //and focus the first link
                 droptarget.getElementsByTagName('a')[0].focus();
@@ -30,7 +28,6 @@ window.onload = function() {
             window.setTimeout( () => {
                 if(!droptarget.contains(document.activeElement) && document.activeElement != dropbtn){
                     droptarget.classList.remove("show");
-                    console.log("remove2");
                 }
             }, 50);
         });
